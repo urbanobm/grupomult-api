@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 import br.com.grupomult.repositories.AnimalRepository;
+import br.com.grupomult.repositories.CarroRepository;
 
 @Configuration
 @ImportResource("classpath:application-context-test.xml")
@@ -12,5 +13,8 @@ public class TestConfiguration {
 
 	@MockBean
 	private AnimalRepository animalRepository;
+
+	@MockBean
+	private CarroRepository carroRepository;
 
 }

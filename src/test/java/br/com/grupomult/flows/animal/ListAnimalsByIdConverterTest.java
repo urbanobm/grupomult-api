@@ -21,12 +21,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.grupomult.api.animal.models.Animal.SpeciesEnum;
-import br.com.grupomult.api.animal.models.ResponseGetAnimalsById;
 import br.com.grupomult.configuration.TestConfiguration;
+import br.com.grupomult.api.animal.models.ResponseGetAnimalsById;
 import br.com.grupomult.converter.AnimalConverter;
 import br.com.grupomult.entities.Animal;
 import br.com.grupomult.entities.Species;
-import br.com.grupomult.flows.animal.ListAnimalsByIdConverter;
 import br.com.grupomult.utils.DateUtils;
 
 @RunWith(PowerMockRunner.class)

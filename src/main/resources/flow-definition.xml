@@ -17,4 +17,33 @@
 	<bean id="listAnimalsByIdConverter"    class="br.com.grupomult.flows.animal.ListAnimalsByIdConverter"    />
 	<bean id="listAnimalsByIdResponse"     class="br.com.grupomult.flows.animal.ListAnimalsByIdResponse"     />
 
+
+
+	<!-- Flow: list carros -->
+	<bean id="listCarrosValidate"  class="br.com.grupomult.flows.carro.ListCarrosValidate"  />
+	<bean id="listCarrosLoad"      class="br.com.grupomult.flows.carro.ListCarrosLoad"      />
+	<bean id="listCarrosConverter" class="br.com.grupomult.flows.carro.ListCarrosConverter" />
+	<bean id="listCarrosResponse"  class="br.com.grupomult.flows.carro.ListCarrosResponse"  />
+
+	<!-- Flow: list carros by id -->
+	<bean id="listCarrosByIdValidate"     class="br.com.grupomult.flows.carro.ListCarrosByIdValidate"     />
+	<bean id="listCarrosByIdLoad"         class="br.com.grupomult.flows.carro.ListCarrosByIdLoad"         />
+	<bean id="listCarrosByIdLoadValidate" class="br.com.grupomult.flows.carro.ListCarrosByIdLoadValidate" />
+	<bean id="listCarrosByIdConverter"    class="br.com.grupomult.flows.carro.ListCarrosByIdConverter"    />
+	<bean id="listCarrosByIdResponse"     class="br.com.grupomult.flows.carro.ListCarrosByIdResponse"     />
+
+	<!-- Flow: insert carros -->
+	<bean id="insertCarrosValidate"       class="br.com.grupomult.flows.carro.InsertCarrosValidate"     />
+	<bean id="insertCarrosConverter"      class="br.com.grupomult.flows.carro.InsertCarrosConverter"    />
+	<bean id="insertCarrosReal"           class="br.com.grupomult.flows.carro.InsertCarrosReal"         />
+	<bean id="insertCarrosLoadValidate"   class="br.com.grupomult.flows.carro.InsertCarrosLoadValidate" />
+
+	<!-- Flow: update carros -->
+	<bean id="updateCarrosReal"           class="br.com.grupomult.flows.carro.UpdateCarrosReal"         />
+	<bean id="updateCarrosValidate"   class="br.com.grupomult.flows.carro.UpdateCarrosValidate" />
+
+
+	<!-- Flow: delete carros -->
+	<bean id="deleteCarrosById"   class="br.com.grupomult.flows.carro.DeleteCarrosById" />
+	
 </beans>

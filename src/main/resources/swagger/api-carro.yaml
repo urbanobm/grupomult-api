@@ -1,0 +1,176 @@
+swagger: '2.0'
+
+info:
+  version: '0.0.1-SNAPSHOT'
+  title: 'API - Carros'
+  description: 'API de recursos de manipulação para Carros'
+
+host: localhost:8080
+basePath: /api/v1
+
+schemes:
+  - http
+  - https
+
+produces:
+  - "application/json"
+
+paths:
+
+  /carros:
+    get:
+      summary: Lista todos os carros cadastrados
+      description: Lista todos os detalhes dos carros cadastrados.
+      operationId: list
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Representação dos dados de todos os carros cadastrados.
+          schema:
+            $ref: '#/definitions/ResponseGetCarros'
+        "204":
+          description: Nenhum carro encontrado
+        "500":
+          description: Erro interno
+
+    post:
+      tags:
+        - carro
+      summary: Adicionar um novo carro
+      description: "Adicionar um novo carro no estoque"
+      operationId: adicionarCarro
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Objeto carro a ser adicionado no estoque
+          required: false
+          schema:
+            $ref: "#/definitions/Carro"
+      responses:
+        "200":
+          description: Carro adicionado
+          schema:
+            $ref: '#/definitions/ResponseGetCarrosById'
+        "405":
+          description: Dados inválidos
+
+    put:
+      tags:
+        - carro
+      summary: Atualiza dados de um carro
+      description: "Atualiza dados de um carro no estoque"
+      operationId: atualizarCarro
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Objeto carro a ser atualizado no estoque
+          required: false
+          schema:
+            $ref: "#/definitions/Carro"
+      responses:
+        "200":
+          description: Carro atualizado
+          schema:
+            $ref: '#/definitions/ResponseGetCarrosById'
+        "400":
+          description: Id inválido enviado
+        "404":
+          description: Carro não encontrado
+        "405":
+          description: Dados inválidos
+
+
+
+  /carros/{id}:
+    get:
+      summary: Lista um carro específico
+      description: Lista os detalhes de um carro específico de acordo com o ID.
+      operationId: detail
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: Detalhe do carro encontrado
+          schema:
+            $ref: '#/definitions/ResponseGetCarrosById'
+        "404":
+          description: Nenhum carro encontrado correspondente ao ID informado
+        "500":
+          description: Erro interno
+
+    delete:
+      summary: Deleta um carro
+      description: "Deleta um carro do estoque"
+      operationId: deletarCarro
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:        
+        - name: idCarro
+          in: path
+          description: O ID do carro a ser deletado
+          required: true
+          type: integer
+      responses:
+        "404":
+          description: Nenhum carro encontrado correspondente ao ID informado
+
+
+definitions:
+
+  ResponseGetCarros:
+    type: object
+    properties:
+      carros:
+        type: array
+        items:
+          $ref: '#/definitions/Carro'
+
+  ResponseGetCarrosById:
+    type: object
+    properties:
+      carro:
+        $ref: '#/definitions/Carro'
+
+  Carro:
+    type: object
+    required:
+      - codigo
+      - descricao
+      - dataCriacao
+      - dataAtualizacao
+      - tipo
+    properties:
+      id:
+        type: integer
+      codigo:
+        type: string
+      descricao:
+        type: string
+      dataCriacao:
+        description: Data de criação
+        type: string
+      dataAtualizacao:
+        description: Data de atualização
+        type: string
+      tipoCarro:
+        type: string
+        enum:
+          - PASSEIO
+          - UTILITARIO
+ 

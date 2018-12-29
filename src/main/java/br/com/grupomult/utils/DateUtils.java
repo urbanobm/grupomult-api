@@ -12,12 +12,22 @@ public final class DateUtils {
 	 */
 	public static final String ISO8601_COMPLETE_DATE = "yyyy-MM-dd";
 
+	public static final String ISO8601_COMPLETE_DATE_HOUR = "yyyy-MM-dd hh:mm:ss";
+
 	private DateUtils() {
 	}
 
 	public static Date stringToDate(String date, String pattern) {
 		try {
 			return new SimpleDateFormat(pattern).parse(date);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public static Date stringToDate(String date) {
+		try {
+			return new SimpleDateFormat(ISO8601_COMPLETE_DATE).parse(date);
 		} catch (Exception e) {
 			return null;
 		}
