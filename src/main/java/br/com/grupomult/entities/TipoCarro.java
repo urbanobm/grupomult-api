@@ -1,5 +1,7 @@
 package br.com.grupomult.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,7 +23,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class TipoCarro {
+public class TipoCarro implements Serializable {
+
+	private static final long serialVersionUID = -3644009450956415689L;
 
 	@Id
 	@GeneratedValue

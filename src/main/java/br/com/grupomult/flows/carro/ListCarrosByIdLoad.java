@@ -14,7 +14,7 @@ public class ListCarrosByIdLoad {
 	@Autowired
 	private ListCarrosByIdLoadValidate validate;
 
-	public ResponseEntity<ResponseGetCarrosById> execute(Integer id) {
+	public ResponseEntity<ResponseGetCarrosById> execute(Long id) {
 		return validate.execute(repository.findOne(id));
 	}
 

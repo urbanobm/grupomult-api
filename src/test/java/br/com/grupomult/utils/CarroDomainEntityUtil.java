@@ -2,6 +2,7 @@ package br.com.grupomult.utils;
 
 import static br.com.grupomult.utils.DateUtils.ISO8601_COMPLETE_DATE_HOUR;
 import static br.com.grupomult.utils.DateUtils.dateToString;
+import static br.com.grupomult.utils.DateUtils.stringToDate;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import br.com.grupomult.api.carro.models.Carro;
 import br.com.grupomult.api.carro.models.Carro.TipoCarroEnum;
 import br.com.grupomult.api.carro.models.ResponseGetCarrosById;
+import br.com.grupomult.entities.CarroPK;
 import br.com.grupomult.entities.TipoCarro;
 
 public class CarroDomainEntityUtil {
@@ -37,7 +39,7 @@ public class CarroDomainEntityUtil {
 				.dataAtualizacao(dataAtualizacao)
 				.dataCriacao(dataCriacao)
 				.descricao("Hyunday i30")
-				.tipoCarro( criarTipoCarro(tipoCarroEnum)).build();
+				.carroPK(new CarroPK( criarTipoCarro(tipoCarroEnum))).build();
 		return carro;
 	}
 	
@@ -46,7 +48,7 @@ public class CarroDomainEntityUtil {
 				.codigo(codigo)
 				.dataCriacao(DateUtils.stringToDate(dataCriacao, DateUtils.ISO8601_COMPLETE_DATE_HOUR))
 				.dataAtualizacao(DateUtils.stringToDate(dataAtualizacao, DateUtils.ISO8601_COMPLETE_DATE_HOUR))
-				.tipoCarro(TipoCarro.builder().code(tipoCarro).build()).build();
+				.carroPK(new CarroPK(TipoCarro.builder().code(tipoCarro).build())).build();
 	}
 
 

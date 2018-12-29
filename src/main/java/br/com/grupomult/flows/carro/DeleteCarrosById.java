@@ -11,7 +11,7 @@ public class DeleteCarrosById {
 	@Autowired
 	private CarroRepository repository;
 
-	public ResponseEntity<Void> execute(Integer id) {
+	public ResponseEntity<Void> execute(Long id) {
 		try{
 			repository.delete(id);
 			return new ResponseEntity<Void>( HttpStatus.OK );

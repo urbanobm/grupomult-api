@@ -24,7 +24,7 @@ public class DeleteCarrosByIdTest {
 
 	@Test
 	public void testDeleteSuccess() {
-		deleteCarrosById.execute(new Random().nextInt());
+		deleteCarrosById.execute(new Random().nextLong());
 	}
 	
 }

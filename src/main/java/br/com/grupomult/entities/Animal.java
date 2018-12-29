@@ -1,5 +1,6 @@
 package br.com.grupomult.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -24,7 +25,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Animal {
+public class Animal implements Serializable {
+
+	private static final long serialVersionUID = 4944015990569194437L;
 
 	@Id
 	@GeneratedValue

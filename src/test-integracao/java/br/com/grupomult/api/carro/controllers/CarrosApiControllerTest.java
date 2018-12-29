@@ -121,7 +121,7 @@ public class CarrosApiControllerTest {
 	@Test
 	public void testDetailSuccess() {
 		ResponseEntity<ResponseGetCarrosById> responseAntes = carrosApiController.detail(carroDadosValidosInserido.getId());
-		Integer idCarroConsultado = responseAntes.getBody().getCarro().getId();
+		Long idCarroConsultado = responseAntes.getBody().getCarro().getId();
 		assertEquals(idCarroConsultado, carroDadosValidosInserido.getId());
 	}
 }

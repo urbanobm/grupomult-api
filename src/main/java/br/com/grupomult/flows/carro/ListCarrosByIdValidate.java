@@ -15,7 +15,7 @@ public class ListCarrosByIdValidate {
 	@Autowired
 	private ListCarrosByIdLoad load;
 
-	public ResponseEntity<ResponseGetCarrosById> execute(Integer id) {
+	public ResponseEntity<ResponseGetCarrosById> execute(Long id) {
 		if (!Optional.ofNullable(id).isPresent() || id < 0) {
 			throw new HttpBadRequestException(ERROR_GET_CARROS_BY_ID_INVALID_ID);
 		}

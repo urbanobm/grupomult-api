@@ -39,7 +39,7 @@ public class CarrosApiController implements CarrosApi {
 	private ListCarrosByIdValidate listCarrosByIdFlow;
 
 	@Override
-	public ResponseEntity<ResponseGetCarrosById> detail( @PathVariable(value = GET_LIST_CARROS_BY_ID_PATH_ID, required = true) Integer id) {
+	public ResponseEntity<ResponseGetCarrosById> detail( @PathVariable(value = GET_LIST_CARROS_BY_ID_PATH_ID, required = true) Long id) {
 		return listCarrosByIdFlow.execute(id);
 	}
 
@@ -59,7 +59,7 @@ public class CarrosApiController implements CarrosApi {
 	}
 
 	@Override
-	public ResponseEntity<Void> deletarCarro( @PathVariable(value = GET_LIST_CARROS_BY_ID_PATH_ID, required = true) Integer id) {
+	public ResponseEntity<Void> deletarCarro( @PathVariable(value = GET_LIST_CARROS_BY_ID_PATH_ID, required = true) Long id) {
 		return deleteCarrosById.execute(id);
 	}
 

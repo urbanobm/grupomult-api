@@ -2,7 +2,7 @@ package br.com.grupomult.flows.carro;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.when;
 
 import java.util.Random;
@@ -44,13 +44,13 @@ public class ListCarrosByIdLoadTest {
 
 	@Before
 	public void setUp() throws Exception {
-		when(repository.findOne(anyInt())).thenReturn(entity);
+		when(repository.findOne(anyLong())).thenReturn(entity);
 		when(validate.execute(entity)).thenReturn(CarroDomainEntityUtil.createResponseEntityResponseGetCarrosById(domain));
 	}
 
 	@Test
 	public void testLoadSuccess() {
-		ResponseEntity<ResponseGetCarrosById> response = flow.execute(new Random().nextInt());
+		ResponseEntity<ResponseGetCarrosById> response = flow.execute(new Random().nextLong());
 		assertNotNull(response);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 

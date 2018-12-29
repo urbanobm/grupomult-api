@@ -1,14 +1,13 @@
 package br.com.grupomult.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,11 +23,18 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Carro {
+public class Carro implements Serializable {
 
-	@Id
-	@GeneratedValue
-	private Integer id;
+	private static final long serialVersionUID = -2756126323782207245L;
+
+    @EmbeddedId
+    private CarroPK carroPK;
+    
+    @Transient
+	private Long id;
+	
+    @Transient
+    private TipoCarro tipoCarro;
 	
 	private String codigo;
 	
@@ -40,7 +46,18 @@ public class Carro {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAtualizacao;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	private TipoCarro tipoCarro;
+	public Long getId(){
+		if(this.getCarroPK() == null){
+			return null;
+		}
+		return this.getCarroPK().getId();
+	}
+
+	public TipoCarro getTipoCarro(){
+		if(this.getCarroPK() == null){
+			return null;
+		}
+		return this.getCarroPK().getTipoCarro();
+	}
 	
 }
