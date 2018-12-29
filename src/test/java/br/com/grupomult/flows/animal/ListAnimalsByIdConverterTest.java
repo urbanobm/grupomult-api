@@ -15,6 +15,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.modules.junit4.PowerMockRunnerDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
@@ -26,6 +27,7 @@ import br.com.grupomult.api.animal.models.ResponseGetAnimalsById;
 import br.com.grupomult.converter.AnimalConverter;
 import br.com.grupomult.entities.Animal;
 import br.com.grupomult.entities.Species;
+import br.com.grupomult.repositories.TipoCarroRepository;
 import br.com.grupomult.utils.DateUtils;
 
 @RunWith(PowerMockRunner.class)
@@ -45,6 +47,9 @@ public class ListAnimalsByIdConverterTest {
 
 	@Autowired
 	private ListAnimalsByIdConverter flow;
+	
+	@MockBean
+	private TipoCarroRepository tipoCarroRepository;
 
 	@Before
 	public void setUp() throws Exception {

@@ -18,9 +18,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.grupomult.api.carro.models.ResponseGetCarrosById;
+import br.com.grupomult.api.carro.models.Carro.TipoCarroEnum;
 import br.com.grupomult.configuration.TestConfiguration;
 import br.com.grupomult.entities.Carro;
 import br.com.grupomult.repositories.CarroRepository;
+import br.com.grupomult.repositories.TipoCarroRepository;
 import br.com.grupomult.utils.CarroDomainEntityUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,6 +34,9 @@ public class ListCarrosByIdLoadTest {
 
 	@Autowired
 	private CarroRepository repository;
+	
+	@MockBean
+	private TipoCarroRepository tipoCarroRepository;
 
 	@MockBean
 	private ListCarrosByIdLoadValidate validate;
@@ -44,7 +49,7 @@ public class ListCarrosByIdLoadTest {
 
 	@Before
 	public void setUp() throws Exception {
-		when(repository.findOne(anyLong())).thenReturn(entity);
+		when(repository.findById(anyLong())).thenReturn(entity);
 		when(validate.execute(entity)).thenReturn(CarroDomainEntityUtil.createResponseEntityResponseGetCarrosById(domain));
 	}
 

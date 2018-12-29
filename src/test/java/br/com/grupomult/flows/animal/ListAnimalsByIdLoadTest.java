@@ -21,6 +21,7 @@ import br.com.grupomult.api.animal.models.ResponseGetAnimalsById;
 import br.com.grupomult.configuration.TestConfiguration;
 import br.com.grupomult.entities.Animal;
 import br.com.grupomult.repositories.AnimalRepository;
+import br.com.grupomult.repositories.TipoCarroRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfiguration.class)
@@ -32,6 +33,9 @@ public class ListAnimalsByIdLoadTest {
 	@Autowired
 	private AnimalRepository repository;
 
+	@MockBean
+	private TipoCarroRepository tipoCarroRepository;
+	
 	@MockBean
 	private ListAnimalsByIdLoadValidate validate;
 

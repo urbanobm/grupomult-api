@@ -20,6 +20,7 @@ import br.com.grupomult.api.carro.models.Carro.TipoCarroEnum;
 import br.com.grupomult.configuration.TestConfiguration;
 import br.com.grupomult.api.carro.models.ResponseGetCarrosById;
 import br.com.grupomult.repositories.CarroRepository;
+import br.com.grupomult.repositories.TipoCarroRepository;
 import br.com.grupomult.utils.CarroDomainEntityUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,12 +34,16 @@ public class InserirCarrosRealTest {
 	private CarroRepository carroRepository;
 	
 	@MockBean
+	private TipoCarroRepository tipoCarroRepository;
+	
+	@MockBean
 	private Carro domain;
 
 	@Before
 	public void setUp() throws Exception {
 		domain = CarroDomainEntityUtil.criarDomainCarro(TipoCarroEnum.PASSEIO);
 		when(carroRepository.save(any(br.com.grupomult.entities.Carro.class))).thenReturn(CarroDomainEntityUtil.criarEntityCarro(TipoCarroEnum.PASSEIO));
+		when(tipoCarroRepository.findByCode(TipoCarroEnum.PASSEIO)).thenReturn(CarroDomainEntityUtil.criarTipoCarro(TipoCarroEnum.PASSEIO));
 		when(insertCarrosReal.execute(domain)).thenReturn( createResponseEntityResponseGetCarrosById() );
 	}
 	
@@ -56,16 +61,14 @@ public class InserirCarrosRealTest {
 		assertNotNull(carro);
 	}
 
-	@Test()
+	@Test(expected = NullPointerException.class)
 	public void testValidateWithCarroNullHttpBadRequestException() {
-		ResponseEntity<ResponseGetCarrosById> response = insertCarrosReal.execute(null);
-		assertNotNull(response);
+		insertCarrosReal.execute(null);
 	}
 
-	@Test()
+	@Test(expected = NullPointerException.class)
 	public void testValidateWithCarroFaltandoDadosHttpBadRequestException() {
-		ResponseEntity<ResponseGetCarrosById> response = insertCarrosReal.execute(new Carro());
-		assertNotNull(response);
+		insertCarrosReal.execute(new Carro());
 	}
 
 	private ResponseEntity<ResponseGetCarrosById> createResponseEntityResponseGetCarrosById() {

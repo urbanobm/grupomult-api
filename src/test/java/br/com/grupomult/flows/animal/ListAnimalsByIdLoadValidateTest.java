@@ -18,6 +18,7 @@ import br.com.grupomult.api.animal.models.ResponseGetAnimalsById;
 import br.com.grupomult.configuration.TestConfiguration;
 import br.com.grupomult.entities.Animal;
 import br.com.grupomult.exceptions.HttpNotFoundException;
+import br.com.grupomult.repositories.TipoCarroRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfiguration.class)
@@ -28,6 +29,9 @@ public class ListAnimalsByIdLoadValidateTest {
 
 	@MockBean
 	private ListAnimalsByIdConverter converter;
+	
+	@MockBean
+	private TipoCarroRepository tipoCarroRepository;
 
 	@MockBean
 	private Animal entity;

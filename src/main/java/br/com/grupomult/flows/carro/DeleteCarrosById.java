@@ -13,7 +13,7 @@ public class DeleteCarrosById {
 
 	public ResponseEntity<Void> execute(Long id) {
 		try{
-			repository.delete(id);
+			repository.delete(repository.findById(id));
 			return new ResponseEntity<Void>( HttpStatus.OK );
 		}catch (Exception e) {
 			 return new ResponseEntity<Void>( HttpStatus.NOT_FOUND );

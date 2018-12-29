@@ -1,5 +1,7 @@
 package br.com.grupomult.api.carro.controllers;
 
+import static br.com.grupomult.api.carro.models.Carro.TipoCarroEnum.PASSEIO;
+import static br.com.grupomult.api.carro.models.Carro.TipoCarroEnum.UTILITARIO;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
@@ -27,6 +29,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import br.com.grupomult.api.carro.controllers.CarrosApiController;
 import br.com.grupomult.api.carro.models.Carro;
 import br.com.grupomult.api.carro.models.Carro.TipoCarroEnum;
+import br.com.grupomult.entities.TipoCarro;
+import br.com.grupomult.repositories.TipoCarroRepository;
 import br.com.grupomult.api.carro.models.ResponseGetCarros;
 import br.com.grupomult.api.carro.models.ResponseGetCarrosById;
 import br.com.grupomult.utils.CarroDomainEntityUtil;
@@ -48,10 +52,16 @@ public class CarrosApiControllerTest {
 	@Autowired
 	private CarrosApiController carrosApiController;
 	
+	@Autowired
+	private TipoCarroRepository tipoCarroRepository;
+	
 	private Carro carroDadosValidosInserido;
 
 	@Before
 	public void setUp() throws Exception {
+		tipoCarroRepository.save(TipoCarro.builder().code(PASSEIO).build());
+		tipoCarroRepository.save(TipoCarro.builder().code(UTILITARIO).build());
+
 		Carro carroDadosValidos = CarroDomainEntityUtil.criarDomainCarro(TipoCarroEnum.PASSEIO);
 		ResponseEntity<ResponseGetCarrosById> response = carrosApiController.adicionarCarro(carroDadosValidos);
 		assertNotNull(response);

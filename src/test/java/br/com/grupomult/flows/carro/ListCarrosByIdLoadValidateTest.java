@@ -18,6 +18,7 @@ import br.com.grupomult.api.carro.models.ResponseGetCarrosById;
 import br.com.grupomult.configuration.TestConfiguration;
 import br.com.grupomult.entities.Carro;
 import br.com.grupomult.exceptions.HttpNotFoundException;
+import br.com.grupomult.repositories.TipoCarroRepository;
 import br.com.grupomult.utils.CarroDomainEntityUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,6 +36,9 @@ public class ListCarrosByIdLoadValidateTest {
 
 	@MockBean
 	private br.com.grupomult.api.carro.models.Carro domain;
+	
+	@MockBean
+	private TipoCarroRepository tipoCarroRepository;
 
 	@Before
 	public void setUp() throws Exception {

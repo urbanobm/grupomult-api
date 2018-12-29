@@ -17,8 +17,6 @@
 	<bean id="listAnimalsByIdConverter"    class="br.com.grupomult.flows.animal.ListAnimalsByIdConverter"    />
 	<bean id="listAnimalsByIdResponse"     class="br.com.grupomult.flows.animal.ListAnimalsByIdResponse"     />
 
-
-
 	<!-- Flow: list carros -->
 	<bean id="listCarrosValidate"  class="br.com.grupomult.flows.carro.ListCarrosValidate"  />
 	<bean id="listCarrosLoad"      class="br.com.grupomult.flows.carro.ListCarrosLoad"      />
@@ -40,8 +38,7 @@
 
 	<!-- Flow: update carros -->
 	<bean id="updateCarrosReal"           class="br.com.grupomult.flows.carro.UpdateCarrosReal"         />
-	<bean id="updateCarrosValidate"   class="br.com.grupomult.flows.carro.UpdateCarrosValidate" />
-
+	<bean id="updateCarrosValidate"       class="br.com.grupomult.flows.carro.UpdateCarrosValidate"     />
 
 	<!-- Flow: delete carros -->
 	<bean id="deleteCarrosById"   class="br.com.grupomult.flows.carro.DeleteCarrosById" />

@@ -19,6 +19,7 @@ import br.com.grupomult.api.carro.models.Carro.TipoCarroEnum;
 import br.com.grupomult.configuration.TestConfiguration;
 import br.com.grupomult.api.carro.models.ResponseGetCarrosById;
 import br.com.grupomult.exceptions.HttpBadRequestException;
+import br.com.grupomult.repositories.TipoCarroRepository;
 import br.com.grupomult.utils.CarroDomainEntityUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,6 +34,9 @@ public class InserirCarrosValidateTest {
 	
 	@MockBean
 	private Carro domain;
+	
+	@MockBean
+	private TipoCarroRepository tipoCarroRepository;
 
 	@Before
 	public void setUp() throws Exception {

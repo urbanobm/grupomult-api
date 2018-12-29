@@ -28,7 +28,7 @@ public abstract class CarroConverter {
 	}
 
 	protected static final br.com.grupomult.entities.Carro convertDomainToEntity(Carro domain) {
-		if (domain == null) {
+		if (domain == null || domain.getTipoCarro() == null) {
 			return null;
 		}
 
