@@ -24,6 +24,7 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import br.com.grupomult.api.carro.controllers.CarrosApiController;
 import br.com.grupomult.api.carro.models.Carro;
 import br.com.grupomult.api.carro.models.Carro.TipoCarroEnum;
 import br.com.grupomult.api.carro.models.ResponseGetCarros;

@@ -95,7 +95,33 @@
 	</dependencies>
 
 	<build>
-		<plugins>
+		<plugins>		
+		
+	        <plugin>
+	            <groupId>org.eclipse.m2e</groupId>
+	            <artifactId>lifecycle-mapping</artifactId>
+	            <version>1.0.0</version>
+	            <configuration>
+	                <lifecycleMappingMetadata>
+	                    <pluginExecutions>
+	                        <pluginExecution>
+	                            <pluginExecutionFilter>
+	                                <groupId>org.apache.maven.plugins</groupId>
+	                                <artifactId>maven-antrun-plugin</artifactId>
+	                                <versionRange>[1.8,)</versionRange>
+	                                <goals>
+	                                    <goal>run</goal>
+	                                </goals>
+	                            </pluginExecutionFilter>
+	                            <action>
+	                                <ignore />
+	                            </action>
+	                        </pluginExecution>
+	                    </pluginExecutions>
+	                </lifecycleMappingMetadata>
+	            </configuration>
+	        </plugin>
+		
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -142,6 +168,28 @@
 							<output>${project.build.directory}/generated/swagger</output>
 							<modelPackage>br.com.grupomult.api.animal.models</modelPackage>
 							<apiPackage>br.com.grupomult.api.animal.controllers</apiPackage>
+							<generateModelDocumentation>false</generateModelDocumentation>
+						</configuration>
+					</execution>
+					<execution>
+						<id>api-generate-sources-carro</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/swagger/api-carro.yaml</inputSpec>
+							<language>spring</language>
+							<addCompileSourceRoot>false</addCompileSourceRoot>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<configOptions>
+								<dateLibrary>java8</dateLibrary>
+								<serializableModel>true</serializableModel>
+								<interfaceOnly>true</interfaceOnly>
+							</configOptions>
+							<output>${project.build.directory}/generated/swagger</output>
+							<modelPackage>br.com.grupomult.api.carro.models</modelPackage>
+							<apiPackage>br.com.grupomult.api.carro.controllers</apiPackage>
 							<generateModelDocumentation>false</generateModelDocumentation>
 						</configuration>
 					</execution>
