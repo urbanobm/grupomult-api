@@ -47,7 +47,6 @@ public class InserirCarrosConverterTest {
 		assertNotNull(carroConverter);
 		assertEquals(carroDadosValidos.getCodigo(), carroConverter.getCodigo());
 		assertEquals(carroDadosValidos.getDescricao(), carroConverter.getDescricao());
-		assertEquals(carroDadosValidos.getId(), carroConverter.getId());
 		assertEquals(carroDadosValidos.getTipoCarro().getCode(), carroConverter.getTipoCarro().getCode());
 		assertEquals(dateToString(carroDadosValidos.getDataAtualizacao(), ISO8601_COMPLETE_DATE_HOUR)
 				, dateToString(carroConverter.getDataAtualizacao(), ISO8601_COMPLETE_DATE_HOUR));
@@ -63,7 +62,11 @@ public class InserirCarrosConverterTest {
 		Carro carroDadosValidos = CarroDomainEntityUtil.criarDomainCarro(TipoCarroEnum.PASSEIO, data, data);
 		Carro carroConverter = insertCarrosConverter.executeConvertEntityToDomain(carroEntity);
 		assertNotNull(carroConverter);
-		assertEquals(carroDadosValidos, carroConverter);
+		assertEquals(carroDadosValidos.getCodigo(), carroConverter.getCodigo());
+		assertEquals(carroDadosValidos.getDescricao(), carroConverter.getDescricao());
+		assertEquals(carroDadosValidos.getTipoCarro(), carroConverter.getTipoCarro());
+		assertEquals(carroDadosValidos.getDataAtualizacao(), carroConverter.getDataAtualizacao());
+		assertEquals(carroDadosValidos.getDataAtualizacao(), carroConverter.getDataAtualizacao());
 	}
 
 	@Test()
